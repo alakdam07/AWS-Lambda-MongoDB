@@ -1,0 +1,8 @@
+/**
+ * Sleep for a few milliseconds
+ */
+export default async function sleep(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds)
+  })
+}

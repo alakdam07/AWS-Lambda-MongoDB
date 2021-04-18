@@ -1,0 +1,51 @@
+service: serverless-aws-codepipeline
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  profile: ${env:profile}
+  runtime: nodejs14.x
+  stage: ${env:stage}
+  region: us-east-1
+  timeout: 30
+  apiName: ${self:service.name}-${self:provider.stage}
+  apiGateway:
+    minimumCompressionSize: 0
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'lambda:InvokeFunction'
+      Resource: '*'
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+    packager: 'npm' # Packager that will be used to package your external modules
+  warmup:
+    enabled: true
+    events:
+      - schedule: rate(5 minutes)
+    prewarm: true
+    concurrency: 1
+  prune:
+    automatic: true
+    number: 5 # Number of versions to keep
+
+functions:
+  mongoEvent:
+    handler: src/handlers/mongo-handler.default
+    events:
+      - http:
+          path: ${env:api_prefix}/mongoEvent
+          method: get
+          cors: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-plugin-warmup
+  - serverless-dotenv-plugin
+  - serverless-prune-plugin
