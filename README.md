@@ -1,16 +1,15 @@
 
 # AWS Lambda invoke and Feteched data from MongoDB
 
-# Description: When this [api](https://4o8ujxmjdb.execute-api.us-east-1.amazonaws.com/production/api/v1/mongoEvent) get trigger Lambda invoked
-#              and fetched the data from MongoDB.
+**Description: When this [api](https://4o8ujxmjdb.execute-api.us-east-1.amazonaws.com/production/api/v1/mongoEvent) get trigger Lambda invokedand fetched the data from MongoDB.**
 
 
-# serverless architecture
+## serverless architecture
 
 <div style="text-align:center">
 <img
-    height="200"
-    width="400"
+    height="500"
+    width="500"
     alt="aws"
    src="https://res.cloudinary.com/drewzxzgc/image/upload/v1618724845/gpucrffir96jf5v9vmpm.png"
   />
