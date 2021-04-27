@@ -9,7 +9,7 @@
 <div style="text-align:center">
 <img
     height="500"
-    width="500"
+    width="800"
     alt="aws"
    src="https://res.cloudinary.com/drewzxzgc/image/upload/v1618724845/gpucrffir96jf5v9vmpm.png"
   />
