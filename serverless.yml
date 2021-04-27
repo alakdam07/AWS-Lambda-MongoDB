@@ -14,16 +14,16 @@ provider:
   apiGateway:
     minimumCompressionSize: 0
   iamRoleStatements:
-    - Effect: 'Allow'
+    - Effect: "Allow"
       Action:
-        - 'lambda:InvokeFunction'
-      Resource: '*'
+        - "lambda:InvokeFunction"
+      Resource: "*"
 
 custom:
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
-    packager: 'npm' # Packager that will be used to package your external modules
+    packager: "npm" # Packager that will be used to package your external modules
   warmup:
     enabled: true
     events:
@@ -41,6 +41,13 @@ functions:
       - http:
           path: ${env:api_prefix}/mongoEvent
           method: get
+          cors: true
+  postEvent:
+    handler: src/handlers/mongo-post.default
+    events:
+      - http:
+          path: ${env:api_prefix}/addTodo
+          method: post
           cors: true
 
 plugins:
