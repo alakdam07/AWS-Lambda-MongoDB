@@ -12,7 +12,7 @@ export interface ITodo {
 export async function mongoPost(event: AWSLambda.APIGatewayEvent): Promise<Response> {
 
   const client = await connect('editor');
-  const requestBody = JSON.parse(event.body as ITodo || '{}');
+  const requestBody = JSON.parse(event.body || '{}');
 
   const Item: ITodo = {
     todo: requestBody.todo,
